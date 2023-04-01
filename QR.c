@@ -10,7 +10,7 @@ int main(int argc, char* argrv[]){
     //selecting the mode indicator:
 
     char mode[50]="", mode_indicator[5]="";
-    char data[]="aA";
+    char data[]="12345";
     int num_check = 0, alnum_check = 0, byte_check = -2, jis_check = -2;
     int v = 11;
 
