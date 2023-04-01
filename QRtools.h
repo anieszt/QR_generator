@@ -10,7 +10,7 @@ int isjis(unsigned char p1, unsigned char p2) {
     return 0;
 }
 
-
+//table of version in C array format; QR_table[version][quality][type_size(bits)]
 
 int QR_table[40][4][4] = 
 {{{41, 25, 17, 10}, {34, 20, 14, 8}, {27, 16, 11, 7}, {17, 10, 7, 4}},
