@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 
 //checks for JIS
@@ -10,7 +11,7 @@ int isjis(unsigned char p1, unsigned char p2) {
     return 0;
 }
 
-//table of version in C array format; QR_table[version][quality][type_size(bits)]
+
 
 int QR_table[40][4][4] = 
 {{{41, 25, 17, 10}, {34, 20, 14, 8}, {27, 16, 11, 7}, {17, 10, 7, 4}},
@@ -69,6 +70,8 @@ char *tobin(int L){
     return bin;
 }
 
+//ta
+
 
 // pads with 0s till right size
 char *pad_v(char bin[33], int v, char mode[5]){
@@ -119,7 +122,45 @@ char *pad_v(char bin[33], int v, char mode[5]){
     }
 
     bin[n] = '\0';
-    //printf("%i  %i   %s   ",n,L, mode);
+    
     return bin;
 
 }
+
+//encoding function for numeric
+    //function to convert a string to an array of sub strings:
+    char *str_array0;
+    int str_to_array(char *str){
+
+    const char delim[] = " ";
+    char *token;
+    int i = 0;
+
+    token = strtok(str, delim);
+
+    while (token != NULL) {
+        str_array0[i++] = token;
+        token = strtok(NULL, delim);
+    }
+
+    return 0;
+}
+
+    //the encoding function:
+char *str_split3(char *num) {
+    int l = strlen(num);
+    char tmp[l + (l/3)];
+    int j = 0;
+    for (int i = 0; i < l; i++) {
+        if (i % 3 == 0) {
+            tmp[j] = ' ';
+            j++;
+        }
+        tmp[j] = num[i];
+        j++;
+    }
+    tmp[j] = '\0';
+    strcpy(num, tmp);
+    return num;
+}
+
