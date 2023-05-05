@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 
 //checks for JIS
@@ -82,26 +81,27 @@ char *pad_v(char bin[33], int v, char mode[5]){
 
 }
 
-//encoding function for numeric
+
     //function to convert a string to an array of sub strings:
-    char *str_array0;
-    
-    int str_to_array(char *str){
-    const char delim[] = " ";
-    char *token;
-    char *tmp[10];
-    int i = 0;
-
-    token = strtok(str, delim);
-
-    while (token != NULL) {
-        tmp[i++] = token;
-        str_array0[i]=tmp[i];
-        token = strtok(NULL, delim);
+char str_a[][4] = {0};
+void str_to_array(char *num){
+    char s = ' ';
+    int q = 1;
+    int i = 0, j = 0;
+    while(i < strlen(num)){
+        if(num[i] == s){
+            i++;
+        } else {
+            for(int k = 0; k < 3; k++){
+                str_a[j][k] = num[i+k];
+            }
+            str_a[j][3] = '\0'; 
+            i += 3;
+            j++;
+        }
     }
-
-    return 0;
 }
+
 
     //function to split a string into substrings of 3 characters:
 char *str_split3(char *num) {
@@ -119,6 +119,14 @@ char *str_split3(char *num) {
     tmp[j] = '\0';
     strcpy(num, tmp);
     return num;
+}
+
+//data encoding:
+    //numeric encoding:
+char strnum_enc[][10]={0};
+void numeric_enc(char *numeric){
+    str_split3(numeric);
+    str_to_array(numeric);
 }
 
 int QR_table[40][4][4] = 

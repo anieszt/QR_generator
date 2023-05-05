@@ -4,14 +4,14 @@
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
-#include "QRtools.h"
+#include "QRutils.h"
 
 int main(int argc, char* argrv[]){
 
     //selecting the mode indicator:
 
     char mode[50]="", mode_indicator[5]="";
-    char data[]="13246382";
+    char data[]="132463822345678998765";
     int num_check = 0, alnum_check = 0, byte_check = -2, jis_check = -2;
     int v = 11;
 
@@ -58,13 +58,13 @@ int main(int argc, char* argrv[]){
     //printf("%s\n", flag);
 
     
-    str_split3(data);
-    str_to_array(data);
+    numeric_enc(data);
 
-    for(int i =0; i<2; i++){
-        printf("%s", str_array0[i]);
+    for(int i =0; i<sizeof(data)/3; i++){
+        printf("%s\n", str_a[i]);
     }
-
+    
+    return 0;
 }
 
 
