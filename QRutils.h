@@ -10,7 +10,7 @@ int isjis(unsigned char p1, unsigned char p2) {
     return 0;
 }
 // converts to binary
-char *tobin(int L){
+char *int_to_bin(int L){
     char *bin = (char *) malloc(sizeof(char)*33);
     int i = 0;
     while(L > 0){
@@ -28,7 +28,7 @@ char *tobin(int L){
 
 
 // pads with 0s till right size
-char *pad_v(char bin[33], int v, char mode[5]){
+char *pad_version(char bin[33], int v, char mode[5]){
 
     int n = 0;
     int L = strlen(bin);
@@ -83,7 +83,7 @@ char *pad_v(char bin[33], int v, char mode[5]){
 
 
     //function to convert a string to an array of sub strings:
-char str_a[][4] = {0};
+char str_array[][4] = {0};
 void str_to_array(char *num){
     char s = ' ';
     int q = 1;
@@ -93,9 +93,9 @@ void str_to_array(char *num){
             i++;
         } else {
             for(int k = 0; k < 3; k++){
-                str_a[j][k] = num[i+k];
+                str_array[j][k] = num[i+k];
             }
-            str_a[j][3] = '\0'; 
+            str_array[j][3] = '\0'; 
             i += 3;
             j++;
         }
@@ -123,7 +123,7 @@ char *str_split3(char *num) {
 
 //data encoding:
     //numeric encoding:
-char strnum_enc[][10]={0};
+char str_numenc_array[][10]={0};
 void numeric_enc(char *numeric){
     str_split3(numeric);
     str_to_array(numeric);

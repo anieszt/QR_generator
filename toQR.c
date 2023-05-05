@@ -46,7 +46,7 @@ int main(int argc, char* argrv[]){
     //selecting the version:
         //number of characters to binary for character count indicator:
 
-    char *bin = tobin(strlen(data));
+    char *bin = int_to_bin(strlen(data));
     char ch_count_indicator[33] ="";
     strcpy(ch_count_indicator, bin);
     free(bin);
@@ -54,14 +54,14 @@ int main(int argc, char* argrv[]){
         //padding of the character count indicator for normalization depending on the version range:
         
     char flag[38]="";
-    strcpy(flag, strcat(strcat(mode_indicator, " "), pad_v(ch_count_indicator,v,mode_indicator)));
+    strcpy(flag, strcat(strcat(mode_indicator, " "), pad_version(ch_count_indicator,v,mode_indicator)));
     //printf("%s\n", flag);
 
     
     numeric_enc(data);
 
     for(int i =0; i<sizeof(data)/3; i++){
-        printf("%s\n", str_a[i]);
+        printf("%s\n", str_array[i]);
     }
     
     return 0;
